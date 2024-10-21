@@ -1,8 +1,3 @@
-Here's a `README.md` file that explains how to install Graphviz (`dot`) on Linux and macOS, and how to use the `render_graphs.sh` and `render_graphs_all.sh` scripts.
-
-### README.md
-
-```markdown
 # Graphviz Rendering Scripts
 
 This repository contains two Bash scripts to automatically render Graphviz `.dot` files into both SVG and PNG formats.
@@ -100,12 +95,4 @@ chmod +x render_graphs_all.sh
 
 ## License
 
-This project is open-source and can be modified or distributed under the terms of the MIT License.
-```
-
-### Instructions:
-
-1. **Place this README.md** in the same directory as your scripts.
-2. **Adjust the License section** as needed depending on your specific license terms.
-
-This README should provide clear instructions for users to install Graphviz, use the scripts, and make them executable. Let me know if you need further customizations!
+This project is open-source and can be modified or distributed under the Unlicense License.
