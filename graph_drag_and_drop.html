@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graph Matching Activity</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    .graph {
+      margin: 20px;
+      padding: 20px;
+      border: 2px solid #000;
+      width: 500px;
+      position: relative;
+    }
+    .node, .placeholder, .standalone {
+      border: 1px solid #000;
+      padding: 10px;
+      background-color: #f9f9f9;
+      cursor: pointer;
+      text-align: center;
+      width: 150px;
+      margin-bottom: 10px;
+    }
+    .placeholder {
+      border: 2px dashed #999;
+      height: 50px;
+      transition: background-color 0.3s;
+    }
+    .placeholder.correct {
+      background-color: #c8e6c9; /* Light green for correct drop */
+    }
+    .placeholder.wrong {
+      background-color: #ffcdd2; /* Light red for wrong drop */
+    }
+    .standalone {
+      margin: 5px;
+      background-color: #cceeff;
+    }
+    .dropzone {
+      margin: 10px;
+      padding: 10px;
+    }
+    .standalone-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .message {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #00796b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Match the Standalone Nodes with the Placeholder Nodes</h1>
+  
+  <!-- Graph Container -->
+  <div class="graph">
+    <div class="node">Nagyobb Természetes Szaporulat</div>
+    <div class="node">Éghajlatváltozás</div>
+    <div class="dropzone placeholder" id="placeholder_aszaly" ondrop="drop(event)" ondragover="allowDrop(event)">
+      Aszály Placeholder
+    </div>
+    
+    <div class="node">Növekvő Állatállomány</div>
+    <div class="node">Kútfúrás</div>
+    <div class="node">Tűzifagyűjtés</div>
+    <div class="node">Növényzet Felégetése</div>
+    <div class="dropzone placeholder" id="placeholder_tullegeltetes" ondrop="drop(event)" ondragover="allowDrop(event)">
+      Túllegeltetés Placeholder
+    </div>
+    <div class="node">Kevésbé Mozgékony Csorda</div>
+
+    <div class="node">Csökken A Növénytakaró</div>
+    <div class="node">Az Állatállomány Pusztulása</div>
+    <div class="dropzone placeholder" id="placeholder_talajerozio" ondrop="drop(event)" ondragover="allowDrop(event)">
+      Talajerózió Placeholder
+    </div>
+    <div class="node">Elsivatagosodás</div>
+    <div class="dropzone placeholder" id="placeholder_ehhinseg" ondrop="drop(event)" ondragover="allowDrop(event)">
+      Éhínség és Járványok Placeholder
+    </div>
+  </div>
+
+  <!-- Standalone Nodes for Dragging -->
+  <div class="standalone-container">
+    <div class="standalone" id="standalone_aszaly" draggable="true" ondragstart="drag(event)">
+      Aszály
+    </div>
+    <div class="standalone" id="standalone_tullegeltetes" draggable="true" ondragstart="drag(event)">
+      Túllegeltetés
+    </div>
+    <div class="standalone" id="standalone_talajerozio" draggable="true" ondragstart="drag(event)">
+      Talajerózió
+    </div>
+    <div class="standalone" id="standalone_ehhinseg" draggable="true" ondragstart="drag(event)">
+      Éhínség és Járványok
+    </div>
+  </div>
+
+  <!-- Feedback message -->
+  <div class="message" id="message"></div>
+
+</div>
+
+<script>
+  const correctMatches = {
+    'placeholder_aszaly': 'standalone_aszaly',
+    'placeholder_tullegeltetes': 'standalone_tullegeltetes',
+    'placeholder_talajerozio': 'standalone_talajerozio',
+    'placeholder_ehhinseg': 'standalone_ehhinseg'
+  };
+
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  }
+
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    var dropzone = ev.target;
+
+    // Check if the dropzone is empty before adding a node
+    if (dropzone.childNodes.length === 1) {
+      var node = document.getElementById(data);
+      dropzone.appendChild(node);
+
+      // Check if the match is correct
+      checkMatch(dropzone.id, node.id);
+    }
+  }
+
+  function checkMatch(placeholderId, nodeId) {
+    if (correctMatches[placeholderId] === nodeId) {
+      document.getElementById(placeholderId).classList.add('correct');
+      document.getElementById(placeholderId).classList.remove('wrong');
+      document.getElementById('message').textContent = "Correct match!";
+    } else {
+      document.getElementById(placeholderId).classList.add('wrong');
+      document.getElementById(placeholderId).classList.remove('correct');
+      document.getElementById('message').textContent = "Wrong match, try again!";
+    }
+  }
+</script>
+
+</body>
+</html>
