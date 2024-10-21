@@ -1,0 +1,54 @@
+digraph G {
+  rankdir = TD;
+  bgcolor = "#ffffff";
+
+  // Define node styles and colors for categories in black and white
+  node [style=filled, fontname="Arial", fontsize=10, shape=rect, width=0.4, height=0.3, fillcolor=white, color=black];
+
+  // Nodes with their labels
+  nagyobb_termeszetes_szaporulat [label="Nagyobb\nTermészetes\nSzaporulat", shape=ellipse];
+  eghajlatvaltozas [label="Éghajlatváltozás", shape=ellipse];
+  aszaly [label="Aszály"];
+  
+  novekvo_allatallomany [label="Növekvő\nÁllatállomány"];
+  kutfuras [label="Kútfúrás"];
+  tuzifagyujtes [label="Tűzifagyűjtés"];
+  novenyzet_felegetese [label="Növényzet\nFelégetése"];
+  tullegeltetes [label="Túllegeltetés"];
+  kevesbe_mozgekony_csorda [label="Kevésbé\nMozgékony\nCsorda"];
+
+  csokken_a_novenytakaro [label="Csökken\nA\nNövénytakaró"];
+  az_allatallomany_pusztulasa [label="Az\nÁllatállomány\nPusztulása"];
+  talajerozio [label="Talajerózió"];
+  elsivatagosodas [label="Elsivatagosodás"];
+  ehhinseg_es_jarvanyok [label="Éhínség\nÉs\nJárványok"];
+
+  // Ranks for nodes
+  {rank=same nagyobb_termeszetes_szaporulat novekvo_allatallomany}
+  {rank=same eghajlatvaltozas aszaly}
+  {rank=same csokken_a_novenytakaro az_allatallomany_pusztulasa}
+
+  // Edges between nodes in black
+  nagyobb_termeszetes_szaporulat -> novekvo_allatallomany [color=black, penwidth=2];
+  nagyobb_termeszetes_szaporulat -> kutfuras [color=black, penwidth=2];
+  nagyobb_termeszetes_szaporulat -> tuzifagyujtes [color=black, penwidth=2];
+
+  eghajlatvaltozas -> aszaly [color=black, penwidth=2];
+
+  novekvo_allatallomany -> novenyzet_felegetese [color=black, penwidth=2];
+  novenyzet_felegetese -> tullegeltetes [color=black, penwidth=2];
+  tullegeltetes -> kevesbe_mozgekony_csorda [color=black, penwidth=2];
+
+  kutfuras -> csokken_a_novenytakaro [color=black, penwidth=2];
+  tuzifagyujtes -> csokken_a_novenytakaro [color=black, penwidth=2];
+  tullegeltetes -> csokken_a_novenytakaro [color=black, penwidth=2];
+  aszaly -> csokken_a_novenytakaro [color=black, penwidth=2];
+
+  csokken_a_novenytakaro -> az_allatallomany_pusztulasa [color=black, penwidth=2];
+  kevesbe_mozgekony_csorda -> az_allatallomany_pusztulasa [color=black, penwidth=2];
+  
+  csokken_a_novenytakaro -> talajerozio [color=black, penwidth=2];
+  talajerozio -> elsivatagosodas [color=black, penwidth=2];
+
+  az_allatallomany_pusztulasa -> ehhinseg_es_jarvanyok [color=black, penwidth=2];
+}
