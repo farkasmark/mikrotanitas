@@ -1,164 +1,464 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Graph Matching Activity</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 50px;
-    }
-    .graph {
-      margin: 20px;
-      padding: 20px;
-      border: 2px solid #000;
-      width: 500px;
-      position: relative;
-    }
-    .node, .placeholder, .standalone {
-      border: 1px solid #000;
-      padding: 10px;
-      background-color: #f9f9f9;
-      cursor: pointer;
-      text-align: center;
-      width: 150px;
-      margin-bottom: 10px;
-    }
-    .placeholder {
-      border: 2px dashed #999;
-      height: 50px;
-      transition: background-color 0.3s;
-    }
-    .placeholder.correct {
-      background-color: #c8e6c9; /* Light green for correct drop */
-    }
-    .placeholder.wrong {
-      background-color: #ffcdd2; /* Light red for wrong drop */
-    }
-    .standalone {
-      margin: 5px;
-      background-color: #cceeff;
-    }
-    .dropzone {
-      margin: 10px;
-      padding: 10px;
-    }
-    .standalone-container {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-    .message {
-      margin-top: 20px;
-      font-weight: bold;
-      color: #00796b;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Matching Activity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            /* Use row to place SVG and graph side by side */
+            align-items: flex-start;
+            margin-top: 50px;
+            gap: 50px;
+            /* Add space between SVG and graph */
+        }
+
+        .graph {
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #000;
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        .node,
+        .placeholder,
+        .standalone {
+            border: 1px solid #000;
+            padding: 10px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            text-align: center;
+            width: 150px;
+        }
+
+        .placeholder {
+            border: 2px dashed #999;
+            margin: 10px;
+            height: 50px;
+            transition: background-color 0.3s;
+        }
+
+        .placeholder.correct {
+            background-color: #c8e6c9;
+            /* Light green for correct drop */
+        }
+
+        .placeholder.wrong {
+            background-color: #ffcdd2;
+            /* Light red for wrong drop */
+        }
+
+        .standalone {
+            margin: 5px;
+            background-color: #cceeff;
+        }
+
+        .dropzone {
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .standalone-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #00796b;
+        }
+
+        svg {
+            width: 800px;
+            height: 600px;
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="container">
-  <h1>Match the Standalone Nodes with the Placeholder Nodes</h1>
-  
-  <!-- Graph Container -->
-  <div class="graph">
-    <div class="node">Nagyobb Természetes Szaporulat</div>
-    <div class="node">Éghajlatváltozás</div>
-    <div class="dropzone placeholder" id="placeholder_aszaly" ondrop="drop(event)" ondragover="allowDrop(event)">
-      Aszály Placeholder
+    <h1>Match the Standalone Nodes with the Placeholder Nodes</h1>
+
+    <div class="container">
+        <svg width="637pt" height="460pt" viewBox="0.00 0.00 636.50 459.98" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 455.98)">
+                <title>G</title>
+                <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-455.98 632.5,-455.98 632.5,4 -4,4" />
+                <!-- nagyobb_termeszetes_szaporulat -->
+                <g id="node1" class="node">
+                    <title>nagyobb_termeszetes_szaporulat</title>
+                    <ellipse fill="white" stroke="black" cx="92.5" cy="-422.99" rx="51.74" ry="28.98" />
+                    <text text-anchor="middle" x="92.5" y="-431.49" font-family="Arial" font-size="10.00">Nagyobb</text>
+                    <text text-anchor="middle" x="92.5" y="-420.49" font-family="Arial"
+                        font-size="10.00">Természetes</text>
+                    <text text-anchor="middle" x="92.5" y="-409.49" font-family="Arial"
+                        font-size="10.00">Szaporulat</text>
+                </g>
+                <!-- novekvo_allatallomany -->
+                <g id="node4" class="node">
+                    <title>novekvo_allatallomany</title>
+                    <polygon fill="white" stroke="black"
+                        points="292,-437.99 217,-437.99 217,-407.99 292,-407.99 292,-437.99" />
+                    <text text-anchor="middle" x="254.5" y="-425.99" font-family="Arial"
+                        font-size="10.00">Növekvő</text>
+                    <text text-anchor="middle" x="254.5" y="-414.99" font-family="Arial"
+                        font-size="10.00">Állatállomány</text>
+                </g>
+                <!-- nagyobb_termeszetes_szaporulat&#45;&gt;novekvo_allatallomany -->
+                <g id="edge1" class="edge">
+                    <title>nagyobb_termeszetes_szaporulat&#45;&gt;novekvo_allatallomany</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M144.39,-422.99C165.09,-422.99 185.79,-422.99 206.49,-422.99" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="206.65,-426.49 216.65,-422.99 206.65,-419.49 206.65,-426.49" />
+                </g>
+                <!-- kutfuras -->
+                <g id="node5" class="node">
+                    <title>kutfuras</title>
+                    <polygon fill="white" stroke="black" points="53,-292 0,-292 0,-270 53,-270 53,-292" />
+                    <text text-anchor="middle" x="26.5" y="-278.5" font-family="Arial" font-size="10.00">Kútfúrás</text>
+                </g>
+                <!-- nagyobb_termeszetes_szaporulat&#45;&gt;kutfuras -->
+                <g id="edge2" class="edge">
+                    <title>nagyobb_termeszetes_szaporulat&#45;&gt;kutfuras</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M70.37,-396.68C61.53,-385.47 51.95,-371.72 45.5,-358 37.12,-340.17 32.14,-318.19 29.4,-302.46" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="32.8,-301.59 27.78,-292.26 25.89,-302.68 32.8,-301.59" />
+                </g>
+                <!-- tuzifagyujtes -->
+                <g id="node6" class="node">
+                    <title>tuzifagyujtes</title>
+                    <polygon fill="white" stroke="black" points="130,-354 55,-354 55,-332 130,-332 130,-354" />
+                    <text text-anchor="middle" x="92.5" y="-340.5" font-family="Arial"
+                        font-size="10.00">Tűzifagyűjtés</text>
+                </g>
+                <!-- nagyobb_termeszetes_szaporulat&#45;&gt;tuzifagyujtes -->
+                <g id="edge3" class="edge">
+                    <title>nagyobb_termeszetes_szaporulat&#45;&gt;tuzifagyujtes</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M92.5,-393.83C92.5,-384.14 92.5,-373.47 92.5,-364.51" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="96,-364.26 92.5,-354.26 89,-364.26 96,-364.26" />
+                </g>
+                <!-- eghajlatvaltozas -->
+                <g id="node2" class="node">
+                    <title>eghajlatvaltozas</title>
+                    <ellipse fill="white" stroke="black" cx="172.5" cy="-213.5" rx="62.87" ry="13.37" />
+                    <text text-anchor="middle" x="172.5" y="-211" font-family="Arial"
+                        font-size="10.00">Éghajlatváltozás</text>
+                </g>
+                <!-- placeholder_aszaly -->
+                <g id="node3" class="node">
+                    <title>placeholder_aszaly</title>
+                    <polygon fill="none" stroke="black" stroke-dasharray="5,2"
+                        points="282,-224.5 253,-224.5 253,-202.5 282,-202.5 282,-224.5" />
+                    <text text-anchor="middle" x="267.5" y="-211" font-family="Arial" font-size="10.00"> </text>
+                </g>
+                <!-- eghajlatvaltozas&#45;&gt;placeholder_aszaly -->
+                <g id="edge4" class="edge">
+                    <title>eghajlatvaltozas&#45;&gt;placeholder_aszaly</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M235.59,-213.5C237.88,-213.5 240.18,-213.5 242.47,-213.5" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="242.54,-217 252.54,-213.5 242.54,-210 242.54,-217" />
+                </g>
+                <!-- csokken_a_novenytakaro -->
+                <g id="node10" class="node">
+                    <title>csokken_a_novenytakaro</title>
+                    <polygon fill="white" stroke="black" points="306,-157 229,-157 229,-116 306,-116 306,-157" />
+                    <text text-anchor="middle" x="267.5" y="-145" font-family="Arial" font-size="10.00">Csökken</text>
+                    <text text-anchor="middle" x="267.5" y="-134" font-family="Arial" font-size="10.00">A</text>
+                    <text text-anchor="middle" x="267.5" y="-123" font-family="Arial"
+                        font-size="10.00">Növénytakaró</text>
+                </g>
+                <!-- placeholder_aszaly&#45;&gt;csokken_a_novenytakaro -->
+                <g id="edge11" class="edge">
+                    <title>placeholder_aszaly&#45;&gt;csokken_a_novenytakaro</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M267.5,-202.39C267.5,-193.39 267.5,-179.77 267.5,-167.33" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="271,-167.28 267.5,-157.28 264,-167.28 271,-167.28" />
+                </g>
+                <!-- novenyzet_felegetese -->
+                <g id="node7" class="node">
+                    <title>novenyzet_felegetese</title>
+                    <polygon fill="white" stroke="black" points="315,-358 250,-358 250,-328 315,-328 315,-358" />
+                    <text text-anchor="middle" x="282.5" y="-346" font-family="Arial" font-size="10.00">Növényzet</text>
+                    <text text-anchor="middle" x="282.5" y="-335" font-family="Arial"
+                        font-size="10.00">Felégetése</text>
+                </g>
+                <!-- novekvo_allatallomany&#45;&gt;novenyzet_felegetese -->
+                <g id="edge5" class="edge">
+                    <title>novekvo_allatallomany&#45;&gt;novenyzet_felegetese</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M259.64,-407.69C263.62,-396.58 269.24,-380.94 273.91,-367.94" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="277.31,-368.81 277.4,-358.21 270.72,-366.44 277.31,-368.81" />
+                </g>
+                <!-- kutfuras&#45;&gt;csokken_a_novenytakaro -->
+                <g id="edge8" class="edge">
+                    <title>kutfuras&#45;&gt;csokken_a_novenytakaro</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M28.37,-270C32.3,-251.87 43.12,-213.56 67.5,-193 110.22,-156.98 174.57,-144.23 218.67,-139.78" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="219.22,-143.25 228.86,-138.86 218.59,-136.27 219.22,-143.25" />
+                </g>
+                <!-- tuzifagyujtes&#45;&gt;csokken_a_novenytakaro -->
+                <g id="edge9" class="edge">
+                    <title>tuzifagyujtes&#45;&gt;csokken_a_novenytakaro</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M89.49,-331.64C82.53,-305.37 68.29,-235.22 100.5,-193 128.15,-156.77 180.28,-143.92 218.97,-139.5" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="219.39,-142.98 228.99,-138.51 218.7,-136.01 219.39,-142.98" />
+                </g>
+                <!-- placeholder_tullegeltetes -->
+                <g id="node8" class="node">
+                    <title>placeholder_tullegeltetes</title>
+                    <polygon fill="none" stroke="black" stroke-dasharray="5,2"
+                        points="325,-292 296,-292 296,-270 325,-270 325,-292" />
+                    <text text-anchor="middle" x="310.5" y="-278.5" font-family="Arial" font-size="10.00"> </text>
+                </g>
+                <!-- novenyzet_felegetese&#45;&gt;placeholder_tullegeltetes -->
+                <g id="edge6" class="edge">
+                    <title>novenyzet_felegetese&#45;&gt;placeholder_tullegeltetes</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M289.14,-327.78C292.81,-319.91 297.43,-310.01 301.43,-301.44" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="304.69,-302.72 305.75,-292.18 298.35,-299.76 304.69,-302.72" />
+                </g>
+                <!-- kevesbe_mozgekony_csorda -->
+                <g id="node9" class="node">
+                    <title>kevesbe_mozgekony_csorda</title>
+                    <polygon fill="white" stroke="black" points="406,-234 339,-234 339,-193 406,-193 406,-234" />
+                    <text text-anchor="middle" x="372.5" y="-222" font-family="Arial" font-size="10.00">Kevésbé</text>
+                    <text text-anchor="middle" x="372.5" y="-211" font-family="Arial" font-size="10.00">Mozgékony</text>
+                    <text text-anchor="middle" x="372.5" y="-200" font-family="Arial" font-size="10.00">Csorda</text>
+                </g>
+                <!-- placeholder_tullegeltetes&#45;&gt;kevesbe_mozgekony_csorda -->
+                <g id="edge7" class="edge">
+                    <title>placeholder_tullegeltetes&#45;&gt;kevesbe_mozgekony_csorda</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M320.19,-269.77C327.35,-262.2 337.46,-251.52 346.89,-241.56" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="349.57,-243.82 353.9,-234.15 344.48,-239.01 349.57,-243.82" />
+                </g>
+                <!-- placeholder_tullegeltetes&#45;&gt;csokken_a_novenytakaro -->
+                <g id="edge10" class="edge">
+                    <title>placeholder_tullegeltetes&#45;&gt;csokken_a_novenytakaro</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M308.95,-269.92C306.29,-253.54 300.27,-220.22 291.5,-193 288.68,-184.24 284.97,-174.97 281.32,-166.56" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="284.4,-164.87 277.12,-157.18 278.01,-167.74 284.4,-164.87" />
+                </g>
+                <!-- az_allatallomany_pusztulasa -->
+                <g id="node11" class="node">
+                    <title>az_allatallomany_pusztulasa</title>
+                    <polygon fill="white" stroke="black" points="404,-157 329,-157 329,-116 404,-116 404,-157" />
+                    <text text-anchor="middle" x="366.5" y="-145" font-family="Arial" font-size="10.00">Az</text>
+                    <text text-anchor="middle" x="366.5" y="-134" font-family="Arial"
+                        font-size="10.00">Állatállomány</text>
+                    <text text-anchor="middle" x="366.5" y="-123" font-family="Arial"
+                        font-size="10.00">Pusztulása</text>
+                </g>
+                <!-- kevesbe_mozgekony_csorda&#45;&gt;az_allatallomany_pusztulasa -->
+                <g id="edge13" class="edge">
+                    <title>kevesbe_mozgekony_csorda&#45;&gt;az_allatallomany_pusztulasa</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M370.92,-192.79C370.3,-184.96 369.56,-175.77 368.87,-167.16" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="372.35,-166.76 368.07,-157.07 365.37,-167.32 372.35,-166.76" />
+                </g>
+                <!-- csokken_a_novenytakaro&#45;&gt;az_allatallomany_pusztulasa -->
+                <g id="edge12" class="edge">
+                    <title>csokken_a_novenytakaro&#45;&gt;az_allatallomany_pusztulasa</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M306.17,-136.5C310.3,-136.5 314.42,-136.5 318.54,-136.5" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="318.79,-140 328.79,-136.5 318.79,-133 318.79,-140" />
+                </g>
+                <!-- placeholder_talajerozio -->
+                <g id="node12" class="node">
+                    <title>placeholder_talajerozio</title>
+                    <polygon fill="none" stroke="black" stroke-dasharray="5,2"
+                        points="282,-80 253,-80 253,-58 282,-58 282,-80" />
+                    <text text-anchor="middle" x="267.5" y="-66.5" font-family="Arial" font-size="10.00"> </text>
+                </g>
+                <!-- csokken_a_novenytakaro&#45;&gt;placeholder_talajerozio -->
+                <g id="edge14" class="edge">
+                    <title>csokken_a_novenytakaro&#45;&gt;placeholder_talajerozio</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M267.5,-115.85C267.5,-107.76 267.5,-98.41 267.5,-90.26" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="271,-90.14 267.5,-80.14 264,-90.14 271,-90.14" />
+                </g>
+                <!-- placeholder_ehhinseg -->
+                <g id="node14" class="node">
+                    <title>placeholder_ehhinseg</title>
+                    <polygon fill="none" stroke="black" stroke-dasharray="5,2"
+                        points="381,-80 352,-80 352,-58 381,-58 381,-80" />
+                    <text text-anchor="middle" x="366.5" y="-66.5" font-family="Arial" font-size="10.00"> </text>
+                </g>
+                <!-- az_allatallomany_pusztulasa&#45;&gt;placeholder_ehhinseg -->
+                <g id="edge16" class="edge">
+                    <title>az_allatallomany_pusztulasa&#45;&gt;placeholder_ehhinseg</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M366.5,-115.85C366.5,-107.76 366.5,-98.41 366.5,-90.26" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="370,-90.14 366.5,-80.14 363,-90.14 370,-90.14" />
+                </g>
+                <!-- elsivatagosodas -->
+                <g id="node13" class="node">
+                    <title>elsivatagosodas</title>
+                    <polygon fill="white" stroke="black" points="312,-22 223,-22 223,0 312,0 312,-22" />
+                    <text text-anchor="middle" x="267.5" y="-8.5" font-family="Arial"
+                        font-size="10.00">Elsivatagosodás</text>
+                </g>
+                <!-- placeholder_talajerozio&#45;&gt;elsivatagosodas -->
+                <g id="edge15" class="edge">
+                    <title>placeholder_talajerozio&#45;&gt;elsivatagosodas</title>
+                    <path fill="none" stroke="black" stroke-width="2"
+                        d="M267.5,-57.99C267.5,-50.91 267.5,-41.17 267.5,-32.48" />
+                    <polygon fill="black" stroke="black" stroke-width="2"
+                        points="271,-32.3 267.5,-22.3 264,-32.3 271,-32.3" />
+                </g>
+                <!-- standalone_aszaly -->
+                <g id="node15" class="node">
+                    <title>standalone_aszaly</title>
+                    <ellipse fill="none" stroke="black" cx="343.5" cy="-422.99" rx="33.47" ry="13.37" />
+                    <text text-anchor="middle" x="343.5" y="-420.49" font-family="Arial" font-size="10.00">Aszály</text>
+                </g>
+                <!-- standalone_tullegeltetes -->
+                <g id="node16" class="node">
+                    <title>standalone_tullegeltetes</title>
+                    <polygon fill="white" stroke="black"
+                        points="466.5,-433.99 394.5,-433.99 394.5,-411.99 466.5,-411.99 466.5,-433.99" />
+                    <text text-anchor="middle" x="430.5" y="-420.49" font-family="Arial"
+                        font-size="10.00">Túllegeltetés</text>
+                </g>
+                <!-- standalone_talajerozio -->
+                <g id="node17" class="node">
+                    <title>standalone_talajerozio</title>
+                    <polygon fill="white" stroke="black"
+                        points="548,-433.99 485,-433.99 485,-411.99 548,-411.99 548,-433.99" />
+                    <text text-anchor="middle" x="516.5" y="-420.49" font-family="Arial"
+                        font-size="10.00">Talajerózió</text>
+                </g>
+                <!-- standalone_ehhinseg -->
+                <g id="node18" class="node">
+                    <title>standalone_ehhinseg</title>
+                    <polygon fill="white" stroke="black"
+                        points="628.5,-443.49 566.5,-443.49 566.5,-402.49 628.5,-402.49 628.5,-443.49" />
+                    <text text-anchor="middle" x="597.5" y="-431.49" font-family="Arial"
+                        font-size="10.00">Éhínség</text>
+                    <text text-anchor="middle" x="597.5" y="-420.49" font-family="Arial" font-size="10.00">És</text>
+                    <text text-anchor="middle" x="597.5" y="-409.49" font-family="Arial"
+                        font-size="10.00">Járványok</text>
+                </g>
+            </g>
+        </svg>
     </div>
-    
-    <div class="node">Növekvő Állatállomány</div>
-    <div class="node">Kútfúrás</div>
-    <div class="node">Tűzifagyűjtés</div>
-    <div class="node">Növényzet Felégetése</div>
-    <div class="dropzone placeholder" id="placeholder_tullegeltetes" ondrop="drop(event)" ondragover="allowDrop(event)">
-      Túllegeltetés Placeholder
+
+    <!-- Interactive Graph Container -->
+    <div>
+        <!-- Graph Container -->
+        <div class="graph">
+            <div class="dropzone placeholder" id="placeholder_aszaly" ondrop="drop(event)"
+                ondragover="allowDrop(event)">
+                Aszály Placeholder
+            </div>
+            <div class="dropzone placeholder" id="placeholder_tullegeltetes" ondrop="drop(event)"
+                ondragover="allowDrop(event)">
+                Túllegeltetés Placeholder
+            </div>
+            <div class="dropzone placeholder" id="placeholder_talajerozio" ondrop="drop(event)"
+                ondragover="allowDrop(event)">
+                Talajerózió Placeholder
+            </div>
+            <div class="dropzone placeholder" id="placeholder_ehhinseg" ondrop="drop(event)"
+                ondragover="allowDrop(event)">
+                Éhínség és Járványok Placeholder
+            </div>
+        </div>
+
+        <!-- Standalone Nodes for Dragging -->
+        <div class="standalone-container">
+            <div class="standalone" id="standalone_aszaly" draggable="true" ondragstart="drag(event)">
+                Aszály
+            </div>
+            <div class="standalone" id="standalone_tullegeltetes" draggable="true" ondragstart="drag(event)">
+                Túllegeltetés
+            </div>
+            <div class="standalone" id="standalone_talajerozio" draggable="true" ondragstart="drag(event)">
+                Talajerózió
+            </div>
+            <div class="standalone" id="standalone_ehhinseg" draggable="true" ondragstart="drag(event)">
+                Éhínség és Járványok
+            </div>
+        </div>
+
+        <!-- Feedback message -->
+        <div class="message" id="message"></div>
     </div>
-    <div class="node">Kevésbé Mozgékony Csorda</div>
-
-    <div class="node">Csökken A Növénytakaró</div>
-    <div class="node">Az Állatállomány Pusztulása</div>
-    <div class="dropzone placeholder" id="placeholder_talajerozio" ondrop="drop(event)" ondragover="allowDrop(event)">
-      Talajerózió Placeholder
     </div>
-    <div class="node">Elsivatagosodás</div>
-    <div class="dropzone placeholder" id="placeholder_ehhinseg" ondrop="drop(event)" ondragover="allowDrop(event)">
-      Éhínség és Járványok Placeholder
-    </div>
-  </div>
 
-  <!-- Standalone Nodes for Dragging -->
-  <div class="standalone-container">
-    <div class="standalone" id="standalone_aszaly" draggable="true" ondragstart="drag(event)">
-      Aszály
-    </div>
-    <div class="standalone" id="standalone_tullegeltetes" draggable="true" ondragstart="drag(event)">
-      Túllegeltetés
-    </div>
-    <div class="standalone" id="standalone_talajerozio" draggable="true" ondragstart="drag(event)">
-      Talajerózió
-    </div>
-    <div class="standalone" id="standalone_ehhinseg" draggable="true" ondragstart="drag(event)">
-      Éhínség és Járványok
-    </div>
-  </div>
+    <script>
+        const correctMatches = {
+            'placeholder_aszaly': 'standalone_aszaly',
+            'placeholder_tullegeltetes': 'standalone_tullegeltetes',
+            'placeholder_talajerozio': 'standalone_talajerozio',
+            'placeholder_ehhinseg': 'standalone_ehhinseg'
+        };
 
-  <!-- Feedback message -->
-  <div class="message" id="message"></div>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
 
-</div>
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
 
-<script>
-  const correctMatches = {
-    'placeholder_aszaly': 'standalone_aszaly',
-    'placeholder_tullegeltetes': 'standalone_tullegeltetes',
-    'placeholder_talajerozio': 'standalone_talajerozio',
-    'placeholder_ehhinseg': 'standalone_ehhinseg'
-  };
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            var dropzone = ev.target;
 
-  function allowDrop(ev) {
-    ev.preventDefault();
-  }
+            // Check if the dropzone is empty before adding a node
+            if (dropzone.childNodes.length === 1) {
+                var node = document.getElementById(data);
+                dropzone.appendChild(node);
 
-  function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-  }
+                // Check if the match is correct
+                checkMatch(dropzone.id, node.id);
+            }
+        }
 
-  function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    var dropzone = ev.target;
-
-    // Check if the dropzone is empty before adding a node
-    if (dropzone.childNodes.length === 1) {
-      var node = document.getElementById(data);
-      dropzone.appendChild(node);
-
-      // Check if the match is correct
-      checkMatch(dropzone.id, node.id);
-    }
-  }
-
-  function checkMatch(placeholderId, nodeId) {
-    if (correctMatches[placeholderId] === nodeId) {
-      document.getElementById(placeholderId).classList.add('correct');
-      document.getElementById(placeholderId).classList.remove('wrong');
-      document.getElementById('message').textContent = "Correct match!";
-    } else {
-      document.getElementById(placeholderId).classList.add('wrong');
-      document.getElementById(placeholderId).classList.remove('correct');
-      document.getElementById('message').textContent = "Wrong match, try again!";
-    }
-  }
-</script>
+        function checkMatch(placeholderId, nodeId) {
+            if (correctMatches[placeholderId] === nodeId) {
+                document.getElementById(placeholderId).classList.add('correct');
+                document.getElementById(placeholderId).classList.remove('wrong');
+                document.getElementById('message').textContent = "Correct match!";
+            } else {
+                document.getElementById(placeholderId).classList.add('wrong');
+                document.getElementById(placeholderId).classList.remove('correct');
+                document.getElementById('message').textContent = "Wrong match, try again!";
+            }
+        }
+    </script>
 
 </body>
+
 </html>

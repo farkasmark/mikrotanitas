@@ -6,22 +6,22 @@ digraph G {
   node [style=filled, fontname="Arial", fontsize=10, shape=rect, width=0.4, height=0.3, fillcolor=white, color=black];
 
   // Nodes with their labels
-  nagyobb_termeszetes_szaporulat [label="Nagyobb\nTermészetes\nSzaporulat", shape=ellipse];
-  eghajlatvaltozas [label="Éghajlatváltozás", shape=ellipse];
-  aszaly [label="Aszály"];
+  nagyobb_termeszetes_szaporulat [label="nagyobb\ntermészetes\nszaporulat", shape=ellipse];
+  eghajlatvaltozas [label="éghajlatváltozás", shape=ellipse];
+  aszaly [label="aszály"];
   
-  novekvo_allatallomany [label="Növekvő\nÁllatállomány"];
-  kutfuras [label="Kútfúrás"];
-  tuzifagyujtes [label="Tűzifagyűjtés"];
-  novenyzet_felegetese [label="Növényzet\nFelégetése"];
-  tullegeltetes [label="Túllegeltetés"];
-  kevesbe_mozgekony_csorda [label="Kevésbé\nMozgékony\nCsorda"];
+  novekvo_allatallomany [label="növekvő\nállatállomány"];
+  kutfuras [label="kútfúrás"];
+  tuzifagyujtes [label="tűzifagyűjtés"];
+  novenyzet_felegetese [label="növényzet\nfelégetése"];
+  tullegeltetes [label="túllegeltetés"];
+  kevesbe_mozgekony_csorda [label="kevésbé\nmozgékony\ncsorda"];
 
-  csokken_a_novenytakaro [label="Csökken\nA\nNövénytakaró"];
-  az_allatallomany_pusztulasa [label="Az\nÁllatállomány\nPusztulása"];
-  talajerozio [label="Talajerózió"];
-  elsivatagosodas [label="Elsivatagosodás"];
-  ehhinseg_es_jarvanyok [label="Éhínség\nÉs\nJárványok"];
+  csokken_a_novenytakaro [label="csökken\na\nnövénytakaró"];
+  az_allatallomany_pusztulasa [label="az\nállatállomány\npusztulása"];
+  talajerozio [label="talajerózió"];
+  elsivatagosodas [label="elsivatagosodás"];
+  ehhinseg_es_jarvanyok [label="éhínség\nés\njárványok"];
 
   // Ranks for nodes
   {rank=same nagyobb_termeszetes_szaporulat novekvo_allatallomany}
