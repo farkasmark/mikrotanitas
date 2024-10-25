@@ -3,25 +3,27 @@ digraph G {
   bgcolor = "#ffffff";
 
   // Define node styles and colors for categories in black and white
-  node [style=filled, fontname="Arial", fontsize=10, shape=rect, width=0.4, height=0.3, fillcolor=white, color=black];
+  node [style=filled, fontname="Arial", fontsize=14, shape=rect, width=0.4, height=0.3];
 
-  // Nodes with their labels
-  nagyobb_termeszetes_szaporulat [label="nagyobb\ntermészetes\nszaporulat", shape=ellipse];
-  eghajlatvaltozas [label="éghajlatváltozás", shape=ellipse];
-  aszaly [label="aszály"];
+  // Represents factors that influence initial conditions or causes that start a chain reaction.
+  nagyobb_termeszetes_szaporulat [label="nagyobb\ntermészetes\nszaporulat", shape=ellipse, fillcolor="#ffcccb"]; // Pink
+  eghajlatvaltozas [label="éghajlatváltozás", shape=ellipse, fillcolor="#ffcccb"]; // Pink
+  aszaly [label="aszály", fillcolor="#ffcccb"]; // Pink
   
-  novekvo_allatallomany [label="növekvő\nállatállomány"];
-  kutfuras [label="kútfúrás"];
-  tuzifagyujtes [label="tűzifagyűjtés"];
-  novenyzet_felegetese [label="növényzet\nfelégetése"];
-  tullegeltetes [label="túllegeltetés"];
-  kevesbe_mozgekony_csorda [label="kevésbé\nmozgékony\ncsorda"];
+  // Represents actions or consequences related to resource usage, expansion, or environmental changes. 
+  novekvo_allatallomany [label="növekvő\nállatállomány", fillcolor="#90ee90"]; // Light green
+  kutfuras [label="kútfúrás", fillcolor="#90ee90"]; // Light green
+  tuzifagyujtes [label="tűzifagyűjtés", fillcolor="#90ee90"]; // Light green
+  novenyzet_felegetese [label="növényzet\nfelégetése", fillcolor="#90ee90"]; // Light green
+  tullegeltetes [label="túllegeltetés", fillcolor="#90ee90"]; // Light green
 
-  csokken_a_novenytakaro [label="csökken\na\nnövénytakaró"];
-  az_allatallomany_pusztulasa [label="az\nállatállomány\npusztulása"];
-  talajerozio [label="talajerózió"];
-  elsivatagosodas [label="elsivatagosodás"];
-  ehhinseg_es_jarvanyok [label="éhínség\nés\njárványok"];
+  // Represents negative outcomes or consequences, particularly ecological damage and its effects on the ecosystem and population.
+  kevesbe_mozgekony_csorda [label="kevésbé\nmozgékony\ncsorda", fillcolor="#add8e6"]; // Light blue
+  csokken_a_novenytakaro [label="csökken\na\nnövénytakaró", fillcolor="#add8e6"]; // Light blue
+  az_allatallomany_pusztulasa [label="az\nállatállomány\npusztulása", fillcolor="#add8e6"]; // Light blue
+  talajerozio [label="talajerózió", fillcolor="#add8e6"]; // Light blue
+  elsivatagosodas [label="elsivatagosodás", fillcolor="#add8e6"]; // Light blue
+  ehhinseg_es_jarvanyok [label="éhínség\nés\njárványok", fillcolor="#add8e6"]; // Light blue
 
   // Ranks for nodes
   {rank=same nagyobb_termeszetes_szaporulat novekvo_allatallomany}

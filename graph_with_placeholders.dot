@@ -3,25 +3,25 @@ digraph G {
   bgcolor = "#ffffff";
 
   // Define node styles and colors for categories in black and white
-  node [style=filled, fontname="Arial", fontsize=10, shape=rect, width=0.4, height=0.3, fillcolor=white, color=black];
+  node [style=filled, fontname="Arial", fontsize=14, shape=rect, width=0.4, height=0.3];
 
   // Nodes with their labels; some nodes left empty as placeholders
-  nagyobb_termeszetes_szaporulat [label="nagyobb\ntermészetes\nszaporulat", shape=ellipse];
-  eghajlatvaltozas [label="éghajlatváltozás", shape=ellipse];
-  placeholder_aszaly [label=" ", style=dashed];
+  nagyobb_termeszetes_szaporulat [label="nagyobb\ntermészetes\nszaporulat", shape=ellipse, fillcolor="#ffcccb"]; // Pink
+  eghajlatvaltozas [label="éghajlatváltozás", shape=ellipse, fillcolor="#ffcccb"]; // Pink
+  placeholder_aszaly [label=" ", style=dashed, fillcolor="#ffcccb"]; // Pink (Placeholder)
   
-  novekvo_allatallomany [label="növekvő\nállatállomány"];
-  kutfuras [label="kútfúrás"];
-  tuzifagyujtes [label="tűzifagyűjtés"];
-  novenyzet_felegetese [label="növényzet\nfelégetése"];
-  placeholder_tullegeltetes [label=" ", style=dashed];
-  kevesbe_mozgekony_csorda [label="kevésbé\nmozgékony\ncsorda"];
+  novekvo_allatallomany [label="növekvő\nállatállomány", fillcolor="#90ee90"]; // Light green
+  kutfuras [label="kútfúrás", fillcolor="#90ee90"]; // Light green
+  tuzifagyujtes [label="tűzifagyűjtés", fillcolor="#90ee90"]; // Light green
+  novenyzet_felegetese [label="növényzet\nfelégetése", fillcolor="#90ee90"]; // Light green
+  placeholder_tullegeltetes [label=" ", style=dashed, fillcolor="#90ee90"]; // Light green (Placeholder)
 
-  csokken_a_novenytakaro [label="csökken\na\nnövénytakaró"];
-  az_allatallomany_pusztulasa [label="az\nállatállomány\npusztulása"];
-  placeholder_talajerozio [label=" ", style=dashed];
-  elsivatagosodas [label="elsivatagosodás"];
-  placeholder_ehhinseg [label=" ", style=dashed];
+  kevesbe_mozgekony_csorda [label="kevésbé\nmozgékony\ncsorda", fillcolor="#90ee90"]; // Light green
+  csokken_a_novenytakaro [label="csökken\na\nnövénytakaró", fillcolor="#add8e6"]; // Light blue
+  az_allatallomany_pusztulasa [label="az\nállatállomány\npusztulása", fillcolor="#add8e6"]; // Light blue
+  placeholder_talajerozio [label=" ", style=dashed, fillcolor="#add8e6"]; // Light blue (Placeholder)
+  elsivatagosodas [label="elsivatagosodás", fillcolor="#add8e6"]; // Light blue
+  placeholder_ehhinseg [label=" ", style=dashed, fillcolor="#add8e6"]; // Light blue (Placeholder)
 
   // Ranks for nodes
   {rank=same nagyobb_termeszetes_szaporulat novekvo_allatallomany}
@@ -54,8 +54,8 @@ digraph G {
 
   // Standalone nodes (for students to match with placeholders)
   // These nodes are placed top-down to the right of the graph
-  standalone_aszaly [label="aszály", shape=ellipse, style=solid, pos="7,-1!"];
-  standalone_tullegeltetes [label="túllegeltetés", shape=solid, pos="7,-2!"];
-  standalone_talajerozio [label="talajerózió", shape=solid, pos="7,-3!"];
-  standalone_ehhinseg [label="éhínség\nés\njárványok", shape=solid, pos="7,-4!"];
+  standalone_aszaly [label="aszály", fillcolor="#c0c0c0", shape=ellipse, pos="7,-1!"];
+  standalone_tullegeltetes [label="túllegeltetés", fillcolor="#c0c0c0", pos="7,-2!"];
+  standalone_talajerozio [label="talajerózió", fillcolor="#c0c0c0", pos="7,-3!"];
+  standalone_ehhinseg [label="éhínség\nés\njárványok", fillcolor="#c0c0c0", pos="7,-4!"];
 }
